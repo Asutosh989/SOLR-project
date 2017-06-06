@@ -2,7 +2,7 @@ var express = require('express');
 const fs = require('fs');
 const search = require('./search');
 const load = require('./load');
-
+const del = require('./delete');
 var router = express.Router();
 
 /* GET home page. */
@@ -17,7 +17,7 @@ router.get('/', function(req, res) {
 
 router.use('/search', search);
 router.use('/load', load);
-
+router.use('/delete', del);
   //  response = {
   //     search_item:req.query.search
   //  };

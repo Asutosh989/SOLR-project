@@ -3,12 +3,31 @@
   <head>
     <meta charset="utf-8">
     <title>Results</title>
+    <link rel='stylesheet' href='../public/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
   <body>
-    <%for (doc of docs) {%>
-      <h2><%= doc.fname %></h2>
-      <h2><%= doc.lname %></h2>
-      <h2><%= doc.email %></h2>
-    <% } %>
+    <nav class="navbar navbar-default navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Search</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/load">Add</a></li>
+          <li><a href="/delete">Delete</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <%for (doc of docs) {%>
+        <h2>Name: <%= doc.fname %>
+        <%= doc.lname %></h2>
+        <h2>Email: <%= doc.email %></h2>
+      <% } %>
+      <div class="form-group"><a href="/"><input type="button" class="btn btn-default btn-inverse" value="Get Back to more Searching!!!"></input></a></div>
+  </div>
   </body>
 </html>

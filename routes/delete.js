@@ -11,24 +11,22 @@ const client = solr.createClient({
 });
 
 router.get('/', function (req, res) {
-  res.render('load');
+  res.render('delete');
 });
-// Add a new document
-router.get('/add', function (req, res, next) {
-  var first = req.query.first;
-  var last = req.query.last;
-  var email = req.query.email;
-  client.add({fname : first, lname : last, email : email},function(err,obj){
+
+router.get('/remove', function (req, res) {
+  var field = req.query.field;
+  var attr = req.query.attr;
+  client.delete(field, attr, function(err,obj){
     if(err){
-      next(err);
+   	  console.log(err);
     }
     else{
-      console.log('Solr response:', obj);
+   	  console.log(obj);
     }
   });
   res.render("success");
 });
-
 
 client.commit(); // save changes
 

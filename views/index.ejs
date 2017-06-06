@@ -2,15 +2,33 @@
 <html>
   <head>
     <title>Robosof</title>
-    <link rel='stylesheet' href='../public/stylesheets/style.css' />
+    <link rel='stylesheet' href='../public/stylesheets/style.css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
   <body>
-    <a href="/load">ADD</a>
-    <h1>Search</h1>
-    <form action="/search" method="GET">
-      <input type="text" name="q" placeholder="Search"></input>
-      <input type="submit" value="submit"></input>
-    </form>
+    <nav class="navbar navbar-default navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Search</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/load">Add</a></li>
+          <li><a href="/delete">Delete</a></li>
+        </ul>
+      </div>
+    </nav>
+  <div class="container">
+      <h1>Search</h1>
+      <form action="/search" method="GET" class="form-inline">
+        <div class="form-group">
+          <input type="text" class="form-control" name="q" placeholder="Search item"></input>
+          <input type="submit" value="Search" class="btn btn-default"></input>
+        </div>
+      </form>
+  </div>
 
   </body>
 </html>

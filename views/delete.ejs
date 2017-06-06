@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Add</title>
+    <meta charset="utf-8">
+    <title>Delete</title>
     <link rel='stylesheet' href='../public/stylesheets/style.css' />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
@@ -21,24 +22,21 @@
       </div>
     </nav>
     <div class="container">
-      <h1>Provide your basic Information</h1>
-      <form action="/load/add" method="GET" class="form-horizontal">
+      <h2> Provide the following information to delete </h3>
+        <h4>Please give field name as "fname", "lname" or "email" for respective query</h4>
+      <form action="/delete/remove" method="GET" class="form-horizontal">
         <div class="form-group">
-          <label>First Name : </label>
-          <input type="text" name="first" class="form-control" placeholder="First name"></input>
+          <label>Field : </label>
+          <input type="text" name="field" class="form-control" placeholder="Field"></input>
         </div>
         <div class="form-group">
-          <label>Last Name : </label>
-          <input type="text" name="last" class="form-control" placeholder="Last name"></input>
+          <label>Attribute :</label>
+          <input type="text" name="attr" class="form-control" placeholder="Attribute"></input>
         </div>
         <div class="form-group">
-          <label>Email : </label>
-          <input type="email" name="email" class="form-control" placeholder="Email"></input>
+          <input type="submit" class="btn btn-default" value="Delete"></input>
         </div>
-        <div class="form-group">
-          <input type="submit" class="btn btn-default" value="Add"></input>
-        </div>
-      </form>
-    </div>
-</body>
+    </form>
+  </div>
+  </body>
 </html>
