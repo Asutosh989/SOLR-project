@@ -1,33 +1,25 @@
-var express = require('express');
-const solr = require('solr-client');
+const express = require('express');
+const log = require('winston');
 
-var router = express.Router();
+const client = require('../lib/solrclient');
 
-const client = solr.createClient({
-    host: 'localhost',
-    port: 9000,
-    core: 'search_add',
-    solrVersion: 6.5
-});
+const router = express.Router();
 
-router.get('/', function (req, res) {
+router.get('/', (req, res) => {
   res.render('delete');
 });
 
-router.get('/remove', function (req, res) {
-  var field = req.query.field;
-  var attr = req.query.attr;
-  client.delete(field, attr, function(err,obj){
-    if(err){
-   	  console.log(err);
-    }
-    else{
-   	  console.log(obj);
+router.get('/remove', (req, res, next) => {
+  const field = req.query.field;
+  const attr = req.query.attr;
+  client.delete(field, attr, { commit: true }, (err, obj) => {
+    if (err) {
+      next(err);
+    } else {
+      log.debug(obj);
     }
   });
-  res.render("success");
+  res.render('success');
 });
-
-client.commit(); // save changes
 
 module.exports = router;

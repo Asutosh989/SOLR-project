@@ -1,35 +1,34 @@
-var express = require('express');
-const solr = require('solr-client');
+const express = require('express');
+const log = require('winston');
+const client = require('../lib/solrclient');
 
-var router = express.Router();
+const router = express.Router();
 
-const client = solr.createClient({
-    host: 'localhost',
-    port: 9000,
-    core: 'search_add',
-    solrVersion: 6.5
-});
-
-router.get('/', function (req, res) {
+router.get('/', (req, res) => {
   res.render('load');
 });
 // Add a new document
-router.get('/add', function (req, res, next) {
-  var first = req.query.first;
-  var last = req.query.last;
-  var email = req.query.email;
-  client.add({fname : first, lname : last, email : email},function(err,obj){
-    if(err){
+router.get('/add', (req, res, next) => {
+  const first = req.query.first;
+  const last = req.query.last;
+  const email = req.query.email;
+  const doc = { // this is the doc we are inserting, it is a good practice to create a new object
+    fname: first,
+    lname: last,
+    email,
+  };
+  // TODO; validate this thing
+  client.add(doc, { commit: true }, (err, obj) => {
+    if (err) {
       next(err);
-    }
-    else{
-      console.log('Solr response:', obj);
+    } else {
+      log.debug('Solr response:', obj);
     }
   });
-  res.render("success");
+  res.render('success');
 });
 
 
-client.commit(); // save changes
+// client.commit(); // save changes
 
 module.exports = router;
