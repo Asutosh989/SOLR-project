@@ -1,0 +1,16 @@
+#!/bin/sh
+case $1 in
+    "start" )
+    docker start ln-solr;;
+    "stop" )
+    docker stop ln-solr;;
+    "init" )
+    docker create --name ln-solr -p 127.0.0.1:8983:8983 solr:6.5-alpine
+    docker start ln-solr
+    sleep 5
+    docker exec -it --user=solr ln-solr bin/solr create_core -c search_add;;
+    "destroy" )
+    docker rm -f ln-solr;;
+    "fixtures" )
+    echo "No fixtures loaded";;
+esac
