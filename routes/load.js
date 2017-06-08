@@ -1,7 +1,8 @@
+const IoC = require('electrolyte');
 const express = require('express');
 const log = require('winston');
-const client = require('../lib/solrclient');
 
+const repositoryRef = IoC.create('repository');  // asks the container to provide a repository instance
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -18,14 +19,14 @@ router.get('/add', (req, res, next) => {
     email,
   };
   // TODO; validate this thing
-  client.add(doc, { commit: true }, (err, obj) => {
-    if (err) {
-      next(err);
-    } else {
-      log.debug('Solr response:', obj);
-    }
-  });
-  res.render('success');
+
+  // Note the use of promises to simplify the code
+  // this statement returns a promise which will be consumed in the next then
+  repositoryRef.then(repository => repository.add(doc, { commit: true }))
+  .then((obj) => {
+    log.debug('Solr response:', obj);
+    res.render('success');
+  }).catch(err => next(err));
 });
 
 
