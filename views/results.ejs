@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>Results</title>
-    <link rel='stylesheet' href='../public/stylesheets/style.css' />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap.material-design/0.5.10/css/bootstrap-material-design.min.css" integrity="sha256-j3CLSRG31GkOu6kaeLh7XsRgL2YNvRl9aOtXoAYt320=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap.material-design/0.5.10/css/ripples.min.css" integrity="sha256-+Og2qJI9qzvKYwhGo/LYXg0FzE1BhEQfDsUSjKXQ3Bg=" crossorigin="anonymous">
   </head>
   <body>
     <nav class="navbar navbar-default navbar-inverse">
@@ -22,12 +23,17 @@
       </div>
     </nav>
     <div class="container">
-      <%for (doc of docs) {%>
-        <h2>Name: <%= doc.fname %>
-        <%= doc.lname %></h2>
+      <% for (doc of docs) { %>
+        <div>
+        <h2>Name: <%= doc.fname %> <%= doc.lname %></h2>
         <h2>Email: <%= doc.email %></h2>
+      </div>
       <% } %>
-      <div class="form-group"><a href="/"><input type="button" class="btn btn-default btn-inverse" value="Get Back to more Searching!!!"></input></a></div>
+      <div class="form-group">
+        <a href="/" class="btn btn-default btn-raised btn-inverse">
+          Back to search
+        </a>
+      </div>
   </div>
   </body>
 </html>

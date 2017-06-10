@@ -3,15 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>Success</title>
-    <link rel='stylesheet' href='../public/stylesheets/style.css' />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap.material-design/0.5.10/css/bootstrap-material-design.min.css" integrity="sha256-j3CLSRG31GkOu6kaeLh7XsRgL2YNvRl9aOtXoAYt320=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap.material-design/0.5.10/css/ripples.min.css" integrity="sha256-+Og2qJI9qzvKYwhGo/LYXg0FzE1BhEQfDsUSjKXQ3Bg=" crossorigin="anonymous">
   </head>
   <body>
     <div class="container">
       <h1>Transaction successful</h1>
-      <div class="form-group"><a href="/load"><input type="button" class="btn btn-default btn-inverse" value="Add More"></input></a></div>
-      <div class="form-group"><a href="/delete"><input type="button" class="btn btn-default btn-inverse" value="Delete More"></input></a></div>
-      <div class="form-group"><a href="/"><input type="button" class="btn btn-default btn-inverse" value="Search"></input></a></div>
+      <div class="links">
+        <a href="/load" class="btn btn-default btn-inverse">Add More</a>
+        <a href="/delete" class="btn btn-default btn-inverse">Delete More</a>
+        <a href="/" class="btn btn-default btn-inverse">Search</a>
+      </div>
     </div>
   </body>
 </html>
