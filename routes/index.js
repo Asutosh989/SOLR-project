@@ -1,12 +1,13 @@
-var express = require('express');
-const fs = require('fs');
+const express = require('express');
+
 const search = require('./search');
 const load = require('./load');
 const del = require('./delete');
-var router = express.Router();
+
+const router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res) {
+router.get('/', (req, res) => {
   res.render('index');
 });
 
